@@ -15,13 +15,13 @@ my @test1 = (
 require_ok('count_subarrays.pl');
 
 describe "Count Subarrays " =>  sub {
-    it "should return a count of all non-decreasing \
-        subarrays in a given array " => sub {
+    it "should return a count of all non-decreasing subarrays \
+        with at least 2 elements in a given array " => sub {
         # Test 1
         my $result = &Practice::CodeChef::countSubArrays($test1[1]->@*);
         ok( $result eq $test1[2], 
-            "countSubArrays result $result should be \
-            equal to number of subarrays in test1 $test1[2]" );
+            "countSubArrays result ($result) should be \
+            equal to number of subarrays in test1 ($test1[2])" );
         return $result;
     };
 };
