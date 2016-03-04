@@ -5,9 +5,9 @@ use warnings;
 
 package Practice::CodeChef;
 
-sub countSubArrays( @ );
+sub countSubArrays (@);
 
-sub countSubArrays( @ ) {
+sub countSubArrays (@) {
     return 0;
 }
 
