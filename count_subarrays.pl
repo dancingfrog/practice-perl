@@ -8,7 +8,35 @@ package Practice::CodeChef;
 sub countSubArrays (@);
 
 sub countSubArrays (@) {
-    return 0;
+    my @array = @_;
+    my @subarrays = ();
+    
+    for (my $idx=0, my $end=@array; $idx < $end; $idx++) {
+        my $elm = $array[$idx];
+        my $more = 1;
+        my @sub = ($elm);
+        
+        while (my $next = $array[$idx + $more]) {
+        
+            if( $idx == 0 && ($idx + $more) == $#array ) {
+                $more++;
+                next;
+                
+            } elsif ($array[$idx + $more - 1] < $next) {
+                push(@subarrays, [@sub, $next]);
+                push(@sub, $next);
+                say "\n @sub \n";
+                $more++;
+                next;
+                
+            } else {
+                last;
+            }
+            
+        }
+    }
+    
+    return @subarrays;
 }
 
 1;
