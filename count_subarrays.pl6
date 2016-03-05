@@ -10,14 +10,16 @@ sub countSubArrays (@array) {
         my $elm = @array[$idx];
         my $more = 1;
         my @sub = ($elm);
+        @subarrays.push([@sub,]);
         
         while (my $next = @array[$idx + $more]) {
         
-            if ($idx == 0 && ($idx + $more) == (@array.elems - 1)) {
-                $more++;
-                next;
-                
-            } elsif (@array[$idx + $more - 1] < $next) {
+#            if ($idx == 0 && ($idx + $more) == (@array.elems - 1)) {
+#                $more++;
+#                next;
+#                
+#            } els
+            if (@array[$idx + $more - 1] < $next) {
                 @subarrays.push([@sub.push($next),]);
                 #@sub.say;
                 $more++;
