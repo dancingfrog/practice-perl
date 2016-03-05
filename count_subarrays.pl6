@@ -1,5 +1,7 @@
 #!/usr/bin/env perl6
 
+package Practice::CodeChef;
+
 sub countSubArrays (@array) {
     my @subarrays = ();
     
