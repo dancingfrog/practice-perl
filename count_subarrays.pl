@@ -23,8 +23,7 @@ sub countSubArrays (@) {
                 next;
                 
             } elsif ($array[$idx + $more - 1] < $next) {
-                push(@subarrays, [@sub, $next]);
-                push(@sub, $next);
+                push(@subarrays, [push(@sub, $next)]);
                 say "\n @sub \n";
                 $more++;
                 next;

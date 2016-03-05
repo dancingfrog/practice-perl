@@ -1,6 +1,6 @@
 #!/usr/bin/env perl6
 
-#? How do you define, export and import packages 
+#? How do I define, export and import packages 
 unit package Practice::CodeChef;
 
 sub countSubArrays (@array) {
@@ -18,9 +18,8 @@ sub countSubArrays (@array) {
                 next;
                 
             } elsif (@array[$idx + $more - 1] < $next) {
-                @subarrays.push([@sub, $next]);
-                @sub.push($next);
-                say "\n" ~ @sub ~ "\n";
+                @subarrays.push([@sub.push($next),]);
+                @sub.say;
                 $more++;
                 next;
                 
@@ -31,8 +30,10 @@ sub countSubArrays (@array) {
         }
     }
     
+    @subarrays.say;
+    
     return @subarrays.elems;
 }
 
-# For now, test function here by calling it as a method on an array
+#? For now, test function here by calling it as a method on an array
 (1, 2, 3, 4, 5).&countSubArrays;
