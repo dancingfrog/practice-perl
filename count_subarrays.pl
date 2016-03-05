@@ -62,6 +62,24 @@ if ($ARGV[0]) {
     
     close $input
         or die "Could not close input: $!\n";
+} else {
+    my ($cases) = <> =~ /(\d+)/;
+    #say "Testing $cases cases\n";
+    my $elements = undef;
+    
+    while ($cases && defined (my $in = <>)) {
+        
+        unless (!$elements) {
+            my @array = split " ", $in;
+            if (@array) {
+                say "". countSubArrays(@array);
+            }
+            $cases--;
+        } elsif (($elements) = $in =~ /^(\d+)$/) {
+            next;
+        }
+        $elements = undef;
+    }
 }
 
 1;
