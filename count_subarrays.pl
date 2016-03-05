@@ -46,7 +46,7 @@ if ($ARGV[0]) {
     #say "Testing $cases cases\n";
     my $elements = undef;
     
-    while(<$input>) {
+    while (<$input>) {
         unless (!$elements) {
             my @array = split " ", $_;
             if (@array) {
