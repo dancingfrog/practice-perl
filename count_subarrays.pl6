@@ -1,6 +1,7 @@
 #!/usr/bin/env perl6
 
-package Practice::CodeChef;
+#? How do you define, export and import packages 
+unit package Practice::CodeChef;
 
 sub countSubArrays (@array) {
     my @subarrays = ();
@@ -19,7 +20,7 @@ sub countSubArrays (@array) {
             } elsif (@array[$idx + $more - 1] < $next) {
                 @subarrays.push([@sub, $next]);
                 @sub.push($next);
-                say "\n @sub \n";
+                say "\n" ~ @sub ~ "\n";
                 $more++;
                 next;
                 
@@ -32,3 +33,6 @@ sub countSubArrays (@array) {
     
     return @subarrays.elems;
 }
+
+# For now, test function here by calling it as a method on an array
+(1, 2, 3, 4, 5).&countSubArrays;
