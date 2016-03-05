@@ -18,7 +18,7 @@ sub countSubArrays (@) {
         
         while (my $next = $array[$idx + $more]) {
         
-            if( $idx == 0 && ($idx + $more) == $#array ) {
+            if ($idx == 0 && ($idx + $more) == $#array) {
                 $more++;
                 next;
                 
