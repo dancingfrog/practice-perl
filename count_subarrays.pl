@@ -24,7 +24,7 @@ sub countSubArrays (@) {
                 
             } elsif ($array[$idx + $more - 1] < $next) {
                 push(@subarrays, [push(@sub, $next)]);
-                say "\n @sub \n";
+                #say "\n @sub \n";
                 $more++;
                 next;
                 
@@ -36,6 +36,30 @@ sub countSubArrays (@) {
     }
     
     return @subarrays;
+}
+
+if ($ARGV[0]) {
+    open my $input, '<', $ARGV[0]
+        or die "Could not open input: $!\n";
+    
+    my ($cases) = <$input> =~ /(\d+)/;
+    #say "Testing $cases cases\n";
+    my $elements = undef;
+    
+    while(<$input>) {
+        unless (!$elements) {
+            my @array = split " ", $_;
+            if (@array) {
+                say "". countSubArrays(@array);
+            }
+            $elements = undef;
+        } elsif (($elements) = $_ =~ /^(\d+)$/) {
+            next;
+        }
+    }
+    
+    close $input
+        or die "Could not close input: $!\n";
 }
 
 1;
