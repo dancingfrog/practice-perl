@@ -39,25 +39,7 @@ sub countSubArrays (@) {
     return @subarrays;
 }
 
-if ($ARGV[0] && $ARGV[0] =~ /^\d+$/) {
-    my ($cases) = <STDIN> =~ /(\d+)/;
-    #say "Testing $cases cases\n";
-    my $elements = undef;
-    
-    while ($cases && defined (my $in = <STDIN>)) {
-        
-        unless (!$elements) {
-            my @array = split " ", $in;
-            if (@array) {
-                say "". countSubArrays(@array);
-            }
-            $cases--;
-        } elsif (($elements) = $in =~ /^(\d+)$/) {
-            next;
-        }
-        $elements = undef;
-    }
-} elsif ($ARGV[0]) {
+if ($ARGV[0]) {
     open my $input, '<', $ARGV[0]
         or die "Could not open input: $!\n";
     
@@ -79,6 +61,24 @@ if ($ARGV[0] && $ARGV[0] =~ /^\d+$/) {
     
     close $input
         or die "Could not close input: $!\n";
+} else {
+    my ($cases) = <STDIN> =~ /(\d+)/;
+    #say "Testing $cases cases\n";
+    my $elements = undef;
+    
+    while ($cases && defined (my $in = <STDIN>)) {
+        
+        unless (!$elements) {
+            my @array = split " ", $in;
+            if (@array) {
+                say "". countSubArrays(@array);
+            }
+            $cases--;
+        } elsif (($elements) = $in =~ /^(\d+)$/) {
+            next;
+        }
+        $elements = undef;
+    }
 }
 
 1;
