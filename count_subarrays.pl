@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-use 5.20.2;
+use 5.10.1;
 use strict;
 use warnings;
 
@@ -19,12 +19,11 @@ sub countSubArrays (@) {
         
         while (my $next = $array[$idx + $more]) {
         
-#            if ($idx == 0 && ($idx + $more) == $#array) {
-#                $more++;
-#                next;
-#                
-#            } els
-            if ($array[$idx + $more - 1] < $next) {
+            if ($idx == 0 && ($idx + $more) == $#array) {
+                $more++;
+                next;
+                
+            } elsif ($array[$idx + $more - 1] < $next) {
                 push(@subarrays, [push(@sub, $next)]);
                 #say "\n @sub \n";
                 $more++;
@@ -40,7 +39,25 @@ sub countSubArrays (@) {
     return @subarrays;
 }
 
-if ($ARGV[0]) {
+if ($ARGV[0] && $ARGV[0] =~ /^\d+$/) {
+    my ($cases) = <STDIN> =~ /(\d+)/;
+    #say "Testing $cases cases\n";
+    my $elements = undef;
+    
+    while ($cases && defined (my $in = <STDIN>)) {
+        
+        unless (!$elements) {
+            my @array = split " ", $in;
+            if (@array) {
+                say "". countSubArrays(@array);
+            }
+            $cases--;
+        } elsif (($elements) = $in =~ /^(\d+)$/) {
+            next;
+        }
+        $elements = undef;
+    }
+} elsif ($ARGV[0]) {
     open my $input, '<', $ARGV[0]
         or die "Could not open input: $!\n";
     
@@ -62,24 +79,6 @@ if ($ARGV[0]) {
     
     close $input
         or die "Could not close input: $!\n";
-} else {
-    my ($cases) = <> =~ /(\d+)/;
-    #say "Testing $cases cases\n";
-    my $elements = undef;
-    
-    while ($cases && defined (my $in = <>)) {
-        
-        unless (!$elements) {
-            my @array = split " ", $in;
-            if (@array) {
-                say "". countSubArrays(@array);
-            }
-            $cases--;
-        } elsif (($elements) = $in =~ /^(\d+)$/) {
-            next;
-        }
-        $elements = undef;
-    }
 }
 
 1;
