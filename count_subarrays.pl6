@@ -14,11 +14,12 @@ sub countSubArrays (@array) {
         
         while (my $next = @array[$idx + $more]) {
         
-#            if ($idx == 0 && ($idx + $more) == (@array.elems - 1)) {
-#                $more++;
-#                next;
-#                
-#            } els
+            #if ($idx == 0 && ($idx + $more) == (@array.elems - 1)) {
+                # In this case do not count full array as subarray
+            #    $more++;
+            #    next;
+            #    
+            #} els
             if (@array[$idx + $more - 1] < $next) {
                 @subarrays.push([@sub.push($next),]);
                 #@sub.say;
@@ -34,9 +35,6 @@ sub countSubArrays (@array) {
     
     return @subarrays.elems;
 }
-
-#? For now, test function here by calling it as a method on an array
-(1, 2, 3, 4, 5).&countSubArrays;
 
 if (@*ARGS[0]) {
     my $input = open @*ARGS[0], :r 
