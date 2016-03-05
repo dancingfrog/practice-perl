@@ -19,11 +19,12 @@ sub countSubArrays (@) {
         
         while (my $next = $array[$idx + $more]) {
         
-            if ($idx == 0 && ($idx + $more) == $#array) {
-                $more++;
-                next;
-                
-            } elsif ($array[$idx + $more - 1] < $next) {
+            #if ($idx == 0 && ($idx + $more) == $#array) {
+            #    $more++;
+            #    next;
+            #    
+            #} els
+            if ($array[$idx + $more - 1] < $next) {
                 push(@subarrays, [push(@sub, $next)]);
                 #say "\n @sub \n";
                 $more++;
