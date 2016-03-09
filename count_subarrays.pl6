@@ -40,8 +40,8 @@ if (@*ARGS[0]) {
     my $input = open @*ARGS[0], :r 
         or die "Could not open input: $!\n";
  
-    my ($cases) = $input.get ~~ /(\d+)/;
-    #say "Testing $cases cases\n";
+    my ($tests) = $input.get ~~ /(\d+)/;
+    #say "Testing $tests cases\n";
     my $elements = 0;
     
     while (defined my $in = $input.get) {
@@ -60,4 +60,23 @@ if (@*ARGS[0]) {
 
     close $input
         or die "Could not close input: $!\n";
+} else { 
+    my ($tests) = $*IN.get ~~ /(\d+)/;
+    #say "Testing $tests cases\n";
+    my $elements = 0;
+    
+    while ($tests && defined my $in = $*IN.get) {
+        $elements = $elements.Int;
+        
+        if ($elements > 0) {
+            my @array = split " ", $in;
+            if (@array) {
+                say countSubArrays(@array);
+            }
+            $tests -= 1;
+        } elsif (($elements) = $in ~~ /^(\d+)$/) {
+            next;
+        }
+        $elements = 0;
+    }
 }

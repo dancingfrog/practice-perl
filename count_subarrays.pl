@@ -44,8 +44,8 @@ if ($ARGV[0]) {
     open my $input, '<', $ARGV[0]
         or die "Could not open input: $!\n";
     
-    my ($cases) = <$input> =~ /(\d+)/;
-    #say "Testing $cases cases\n";
+    my ($tests) = <$input> =~ /(\d+)/;
+    #say "Testing $tests cases\n";
     my $elements = undef;
     
     while (<$input>) {
@@ -63,18 +63,18 @@ if ($ARGV[0]) {
     close $input
         or die "Could not close input: $!\n";
 } else {
-    my ($cases) = <STDIN> =~ /(\d+)/;
-    #say "Testing $cases cases\n";
+    my ($tests) = <STDIN> =~ /(\d+)/;
+    #say "Testing $tests cases\n";
     my $elements = undef;
     
-    while ($cases && defined (my $in = <STDIN>)) {
+    while ($tests && defined (my $in = <STDIN>)) {
         
         unless (!$elements) {
             my @array = split " ", $in;
             if (@array) {
                 say "". countSubArrays(@array);
             }
-            $cases--;
+            $tests--;
         } elsif (($elements) = $in =~ /^(\d+)$/) {
             next;
         }
