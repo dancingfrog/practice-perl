@@ -1,6 +1,6 @@
 #!/usr/bin/env perl6
 
-#? How do I define, export and import packages
+#? How do I define, export and import packages in Perl6?
 unit package Practice::CodeChef;
 
 sub countSubArrays (@array) {
